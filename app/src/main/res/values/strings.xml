@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UrlBlocker</string>
+    <string name="url_txt">url</string>
+    <string name="add_button">Add</string>
+    <string name="accessibilityServicePermission">Allow Accessibility Service for the app to work correctly</string>
+    <string name="accessibilityServiceSetting">Block websites to not be accessible on this phone</string>
+    <string name="error_empty">empty field</string>
+    <string name="successfull_added">Add successfully</string>
+</resources>
