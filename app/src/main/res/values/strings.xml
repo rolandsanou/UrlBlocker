@@ -6,4 +6,9 @@
     <string name="accessibilityServiceSetting">Block websites to not be accessible on this phone</string>
     <string name="error_empty">empty field</string>
     <string name="successfull_added">Add successfully</string>
+    <string name="cancel">Cancel</string>
+    <string name="allowPermissionButton">Allow</string>
+    <string name="accessibility_perm_title">Accessibility Permission</string>
+    <string name="activity_accessibility_permission_description">Enable Accessibility Permission to allow app to work properly</string>
+    <string name="misform_url_msg_txt">This is not a correct URL</string>
 </resources>

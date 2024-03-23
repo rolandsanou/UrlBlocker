@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_appbar">#b3ffffff</color>
     <color name="item_background_color">#A2B3D9</color>
+    <color name="enable_color">#4dffffff</color>
 </resources>

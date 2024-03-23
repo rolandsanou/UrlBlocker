@@ -50,8 +50,8 @@ public class UrlAdapter extends RecyclerView.Adapter<UrlAdapter.UrlViewHolder> {
         return _url;
     }
 
-    private void setSelectedItem(UrlModel model){
-        _url = model;
+    public ArrayList<UrlModel> getUrlList(){
+        return _urlModelList;
     }
 
     public class UrlViewHolder extends RecyclerView.ViewHolder{

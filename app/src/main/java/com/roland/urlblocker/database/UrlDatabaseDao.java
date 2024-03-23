@@ -20,4 +20,6 @@ public interface UrlDatabaseDao {
     void deleteUrl(UrlModel urlModel);
     @Query("SELECT * FROM BlockedUrls")
     List<UrlModel>getBlockedList();
+    @Query("SELECT Name FROM BlockedUrls")
+    List<String>getBlockedUrlsList();
 }

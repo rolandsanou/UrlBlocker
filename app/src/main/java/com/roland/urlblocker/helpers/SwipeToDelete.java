@@ -65,9 +65,10 @@ public class SwipeToDelete extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
-        if(mAdapter.getSelectedItem()!=null){
-            //UrlLocalDatabase.getInstance(mContext).UrlDatabaseDao().deleteUrl(mAdapter.getSelectedItem());
+        if(!mAdapter.getUrlList().isEmpty()){
+            UrlLocalDatabase.getInstance(mContext).UrlDatabaseDao().deleteUrl(mAdapter.getUrlList().get(position));
             mAdapter.notifyItemRemoved(position);
+            mAdapter.getUrlList().remove(mAdapter.getUrlList().get(position));
         }
     }
 
