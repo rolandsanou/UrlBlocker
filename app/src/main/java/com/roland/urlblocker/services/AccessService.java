@@ -2,8 +2,10 @@ package com.roland.urlblocker.services;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -15,6 +17,7 @@ import android.util.Patterns;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -53,18 +56,18 @@ public class AccessService extends AccessibilityService {
                     info.getClassName().toString().contains("TextView")) {
                 String inputText = info.getText().toString();
                 System.out.println("ACCESSIBILITY SERVICE : "+inputText);
-                blockedList(extractUrl(inputText));
-//                if(inputText.contains("facebook.com")){
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://chomar-parental-control/"));
-//                    intent.setPackage("com.android.chrome");
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    intent.putExtra(Browser.EXTRA_APPLICATION_ID, "com.android.chrome");
-//                    try {
-//                        startActivity(intent);
-//                    } catch (ActivityNotFoundException ex) {
-//                        Log.d("MainRedirect", "Exception = " + ex.toString());
-//                    }
-//                }
+                //blockedList(extractUrl(inputText));
+                if(blockedList(extractUrl(inputText))){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://ari/"));
+                    intent.setPackage("com.android.chrome");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(Browser.EXTRA_APPLICATION_ID, "com.android.chrome");
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        Log.d("MainRedirect", "Exception = " + ex.toString());
+                    }
+                }
             }
         }
     }
@@ -93,7 +96,7 @@ public class AccessService extends AccessibilityService {
                         databaseUrls) {
                     Log.d(TAG, "Detected URL: " + item+ " vs Database URL: "+url);
                     if(item.equalsIgnoreCase(url) || item.toLowerCase().contains(url.toLowerCase())){
-                        System.out.println("Got U :)");
+                        Log.d(TAG, "Lock In");
                         return true;
                     }
                 }
